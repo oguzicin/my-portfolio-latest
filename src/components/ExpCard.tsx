@@ -1,21 +1,58 @@
-import React from "react";
+  import React, { useState } from "react";
 
 
-type Props = {
-  heading:string
-  text:string
-  link?:string
-};
+  type ExpDetail = {
+    heading: string;
+    text: {
+      header: string;
+      description: string;
+    };
+  };
 
-const ExpCard = ({heading, text ,link}: Props) => {
-  return (
-    <div>
-    <div className="flex flex-row justify-evenly w-full mt-6 me-4 gap-14 custom-sm:justify-between text-gray-400 custom-xs:ms-5 custom-sm:w-fit ">
-        <div className="custom-xs:text-[3.4vw] custom-xm:text-[1rem] flex items-center  min-h-10 w-48  text-left"><button className="w-full h-full focus:border-[#64ffda] focus:text-[#64ffda] border-e-2 flexitems-center">{heading}</button></div>
-        <div className="custom-xs:text-[2.2vw] custom-xm:text-[0.8rem] items-center flex">{text}</div>
-    </div>
-</div>
-  );
-};
 
-export default ExpCard;
+  type ExpCardProps = {
+    experience: ExpDetail[]; 
+  };
+
+  const ExpCard = ({ experience }: ExpCardProps) => {
+    const [activeIndex, setActiveIndex] = useState<number>(0);
+
+    const handleClick = (index: number) => {
+      setActiveIndex(index);
+    };
+
+    return (
+      <div className="flex flex-row gap-10">
+        {/* Sol kısım: Başlıklar */}
+        <div className="flex flex-col w-1/3">
+          {experience.map((exp, index) => (
+            <div
+              key={index}
+              onClick={() => handleClick(index)}
+              className={`cursor-pointer p-2 mb-4 text-lg font-semibold ${
+                activeIndex === index
+                  ? "text-[#64ffda] bg-gray-800"
+                  : "text-gray-400 hover:text-[#64ffda]"
+              }`}
+            >
+              {exp.heading}
+            </div>
+          ))}
+        </div>
+
+        {/* Sağ kısım: İçerik */}
+        <div className="flex flex-col w-2/3">
+          <div>
+
+            <h3 className="text-xl font-bold text-gray-100 mb-4 text-left"
+              dangerouslySetInnerHTML={{ __html: experience[activeIndex].text.header }}
+            />
+
+            <p className="text-gray-300 text-left">{experience[activeIndex].text.description}</p>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  export default ExpCard;

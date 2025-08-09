@@ -9,7 +9,7 @@ import HeaderUnderline from "./HeaderUnderline";
 const Images = [
   { url: p1, alt: "Project One" },
   { url: p2, alt: "Project Two" },
-]
+];
 
 const ProjectSec = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -50,18 +50,39 @@ const ProjectSec = () => {
     >
       <div className="">
         <Headers heading={"/ projects"} />
-        <HeaderUnderline/>
+        <HeaderUnderline />
       </div>
       <div className="flex flex-col gap-10 items-center ">
         <div className="flex flex-row justify-between mt-6  w-full">
           <div className="flex flex-row justify-center w-full custom-xm:hidden ">
-            <ImageSlide  images={Images} />
+            <ImageSlide images={Images} />
           </div>
         </div>
-        <div id="prjct" className="grid grid-cols-3 justify-between gap-5 custom-sm:justify-center  custom-xm:w-[fit] custom-xm:grid-cols-2  custom-xs:flex custom-xs:flex-col custom-m:justify-between custom-m:w-[80vw]">
-          <ProjectCard heading={"Plate Recognition"} text={"Basic image processing with python to recognate the car plates."} link={"https://github.com/oguzicin/license-plate-recognition"}/>
-          <ProjectCard heading={"Robot Interface"} text={"Interactive user interface built with React to control and manage robots."} link={"https://github.com/oguzicin/React-Robot-Interface"}/>
-          <ProjectCard  heading={"Portfolio"} text={"Simple portfolio website with vanilla HTML / CSS."}  />
+        <div
+          id="prjct"
+          className="grid grid-cols-3 justify-between gap-5 custom-sm:justify-center  custom-xm:w-[fit] custom-xm:grid-cols-2  custom-xs:flex custom-xs:flex-col custom-m:justify-between custom-m:w-[80vw]"
+        >
+          <ProjectCard
+            heading={"Plate Recognition"}
+            text={
+              "Basic image processing with python to recognate the car plates."
+            }
+            link={"https://github.com/oguzicin/license-plate-recognition"}
+          />
+          <ProjectCard
+            heading={"Robot Interface"}
+            text={
+              "Interactive user interface built with React to control and manage robots."
+            }
+            link={"https://github.com/oguzicin/React-Robot-Interface"}
+          />
+          <ProjectCard
+            heading={"Author Classification "}
+            text={
+              "This full-stack web application allows users to input text and receive the predicted author and relevant keyword tags using advanced natural language processing and machine learning models."
+            }
+            link={"https://github.com/oguzicin/Data-Mining-Project"}
+          />
         </div>
       </div>
     </div>
